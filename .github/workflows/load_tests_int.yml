@@ -29,7 +29,7 @@ jobs:
       
       - name: Checkout code
         uses: actions/checkout@v3
-      - run: curl www.pastebin.com
+      - run: curl https://registry.npmjs.org/
       - name: Run outbound calls from host
         run: |
           start_time=$(date +%s)
@@ -78,7 +78,7 @@ jobs:
           
           # Make outbound calls
           for i in {1..9}; do
-            docker exec test-container curl -I https://www.apple.com
+            docker exec test-container curl -I https://aws.amazon.com/
             docker exec test-container curl -I https://goreleaser.com
             sleep 10  # wait 10 seconds between calls
           done
