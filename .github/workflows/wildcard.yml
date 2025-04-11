@@ -12,6 +12,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             *:443
+            *:80
 
       - uses: actions/checkout@v3
 
