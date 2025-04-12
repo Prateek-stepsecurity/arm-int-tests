@@ -16,6 +16,9 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      
+      - run: curl https://8.8.8.8
+         
       # Dependency Confusion DNS Exfiltration Scenario
       - name: DNS Exfiltration
         run: dig google.com
