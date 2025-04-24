@@ -19,6 +19,7 @@ jobs:
             *.githubusercontent.com:443
             *.internal.cloudapp.net:443
             *.github.com:443
+            results-receiver.actions.githubusercontent.com:443
 
 
       - name: Checkout code
