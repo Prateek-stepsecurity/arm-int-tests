@@ -16,21 +16,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: |
             github.com:443
-            *.githubusercontent.com:443
-            *.internal.cloudapp.net:443
-            *.github.com:443
-            results-receiver.actions.githubusercontent.com:443
-            github.com:80
-            *.githubusercontent.com:80
-            *.internal.cloudapp.net:80
-            *.github.com:80
-            results-receiver.actions.githubusercontent.com:80
-            github.com:53
-            *.githubusercontent.com:53
-            *.internal.cloudapp.net:53
-            *.github.com:53
-            results-receiver.actions.githubusercontent.com:53
-
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -54,7 +39,7 @@ jobs:
 
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@v2
+        uses: h0x0er/harden-runner@int
         with:
           egress-policy: block
           allowed-endpoints: |
