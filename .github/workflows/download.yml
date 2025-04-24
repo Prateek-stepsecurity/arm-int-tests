@@ -26,6 +26,7 @@ jobs:
 
       - name: Create artifact file
         run: |
+          sleep 10
           echo "Hello from the build job!" > output.txt
 
       - name: Upload artifact
