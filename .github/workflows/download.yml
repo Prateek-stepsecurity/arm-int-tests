@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@rc-20-int
+        uses: h0x0er/harden-runner@int
         with:
           egress-policy: block
           allowed-endpoints: |
