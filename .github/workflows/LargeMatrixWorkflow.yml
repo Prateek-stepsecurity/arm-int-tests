@@ -26,6 +26,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
+      - name: Sleep for 3 minutes on push
+        if: github.event_name == 'push'
+        run: sleep 180
+      
       - name: Make a curl request
         run: curl https://google.com
       
