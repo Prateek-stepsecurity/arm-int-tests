@@ -42,7 +42,7 @@ jobs:
           done
   
   test-docker-outbound:
-    runs-on: ARMLinuxRunner
+    runs-on: LargeRunner
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
