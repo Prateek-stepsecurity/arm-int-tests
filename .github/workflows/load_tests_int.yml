@@ -42,7 +42,7 @@ jobs:
           done
   
   test-docker-outbound:
-    runs-on: ubuntu-20.04
+    runs-on: ARMLinuxRunner
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
@@ -144,7 +144,7 @@ jobs:
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
   test-long-running-docker:
-    runs-on: ubuntu-latest
+    runs-on: ARMLinuxRunner
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
