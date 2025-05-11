@@ -10,8 +10,8 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
         with:
-          egress-policy: audit
-          allowed-endpoints: >
+          egress-policy: block
+          allowed-endpoints: |
             github.com:443
             goreleaser.com:443
             
@@ -47,8 +47,8 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
         with:
-          egress-policy: audit
-          allowed-endpoints: >
+          egress-policy: block
+          allowed-endpoints: |
             archive.ubuntu.com:80
             github.com:443
             goreleaser.com:443
@@ -99,8 +99,8 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
         with:
-          egress-policy: audit
-          allowed-endpoints: >
+          egress-policy: block
+          allowed-endpoints: |
             archive.ubuntu.com:80
             auth.docker.io:443
             github.com:443
@@ -149,8 +149,8 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@int-sh
         with:
-          egress-policy: audit
-          allowed-endpoints: >
+          egress-policy: block
+          allowed-endpoints: |
             archive.ubuntu.com:80
             auth.docker.io:443
             github.com:443
