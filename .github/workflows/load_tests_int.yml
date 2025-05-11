@@ -179,6 +179,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             archive.ubuntu.com:80
+            ports.ubuntu.com:443
             auth.docker.io:443
             github.com:443
             goreleaser.com:443
