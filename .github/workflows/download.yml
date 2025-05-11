@@ -55,6 +55,7 @@ jobs:
           allowed-endpoints: >
             github.com:443
             *.github.com:443
+            *.trafficmanager.net:443
 
       - name: Download artifact
         uses: actions/download-artifact@v4
