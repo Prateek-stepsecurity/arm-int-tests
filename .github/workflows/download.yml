@@ -16,6 +16,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: |
             github.com:443
+            *.github.com:443
             results-receiver.actions.githubusercontent.com:80
             results-receiver.actions.githubusercontent.com:443
 
