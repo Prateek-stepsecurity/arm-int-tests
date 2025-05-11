@@ -17,13 +17,20 @@ jobs:
           allowed-endpoints: |
             github.com:443
             *.github.com:443
+            google.com:443
             results-receiver.actions.githubusercontent.com:80
             results-receiver.actions.githubusercontent.com:443
 
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create artifact file
+      - name: call google
+        run: |
+          dig google.com
+          curl https://google.com
+          
+          
+      - name: call results-receiver.actions.githubusercontent.com
         run: |
           dig results-receiver.actions.githubusercontent.com
           curl https://results-receiver.actions.githubusercontent.com
