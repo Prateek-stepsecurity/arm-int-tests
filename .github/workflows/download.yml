@@ -16,10 +16,8 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            *.github.com:443
             google.com:443
-            results-receiver.actions.githubusercontent.com:80
-            results-receiver.actions.githubusercontent.com:443
+            
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -54,8 +52,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            *.github.com:443
-            *.trafficmanager.net:443
+            
 
       - name: Download artifact
         uses: actions/download-artifact@v4
