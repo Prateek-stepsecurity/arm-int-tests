@@ -52,6 +52,7 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
+            receiver.actions.githubusercontent.com:443
             
 
       - name: Download artifact
