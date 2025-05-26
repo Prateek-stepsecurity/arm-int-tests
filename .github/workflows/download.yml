@@ -31,8 +31,8 @@ jobs:
           
       - name: call results-receiver.actions.githubusercontent.com
         run: |
-          dig results-receiver.actions.githubusercontent.com
-          curl https://results-receiver.actions.githubusercontent.com
+          # dig results-receiver.actions.githubusercontent.com
+          # curl https://results-receiver.actions.githubusercontent.com
           echo "Hello from the build job!" > output.txt
 
       - name: Upload artifact
@@ -53,7 +53,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            receiver.actions.githubusercontent.com:443
             *.internal.cloudapp.net:443
             
 
