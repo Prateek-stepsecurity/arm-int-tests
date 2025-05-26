@@ -18,11 +18,14 @@ jobs:
             github.com:443
             google.com:443
             *.internal.cloudapp.net:443
-            
 
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - run: |
+          bash trace_log.sh&
+          
       - name: call google
         run: |
           dig google.com
@@ -42,6 +45,11 @@ jobs:
           name: my-artifact
           path: output.txt
 
+      - name: print tracer log
+        if: always()
+        run: |
+          sudo cat trace.log
+
   consume:
     needs: build
     runs-on: ubuntu-latest
@@ -55,6 +63,11 @@ jobs:
             github.com:443
             *.internal.cloudapp.net:443
             
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - run: |
+          bash trace_log.sh&
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -65,3 +78,8 @@ jobs:
         run: |
           echo "Contents of artifact:"
           cat output.txt
+     
+      - name: print tracer log
+        if: always()
+        run: |
+          sudo cat trace.log
