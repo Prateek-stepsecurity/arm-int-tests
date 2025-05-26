@@ -19,6 +19,7 @@ jobs:
             google.com:443
             *.internal.cloudapp.net:443
 
+      - run: sudo resolvectl flush-caches 
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -55,7 +56,7 @@ jobs:
 
     steps:
 
-
+      - run: sudo resolvectl flush-caches 
   
       - name: Harden the runner (Audit all outbound calls)
         uses: h0x0er/harden-runner@int #step-security/harden-runner@rc
