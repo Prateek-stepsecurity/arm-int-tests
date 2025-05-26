@@ -19,7 +19,7 @@ jobs:
             google.com:443
             *.internal.cloudapp.net:443
 
-      
+      - run: sudo journalctl -u systemd-resolved | grep -i 'query'
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -55,6 +55,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+
+      - run: sudo journalctl -u systemd-resolved | grep -i 'query'
+  
       - name: Harden the runner (Audit all outbound calls)
         uses: h0x0er/harden-runner@int #step-security/harden-runner@rc
         with:
