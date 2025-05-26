@@ -17,6 +17,7 @@ jobs:
           allowed-endpoints: >
             github.com:443
             google.com:443
+            *.internal.cloudapp.net:443
             
 
       - name: Checkout code
@@ -53,6 +54,7 @@ jobs:
           allowed-endpoints: >
             github.com:443
             receiver.actions.githubusercontent.com:443
+            *.internal.cloudapp.net:443
             
 
       - name: Download artifact
