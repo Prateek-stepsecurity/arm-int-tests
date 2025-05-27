@@ -22,8 +22,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - run: |
-          bash trace_log.sh&
+      # - run: |
+      #     bash trace_log.sh&
           
       - name: call google
         run: |
@@ -33,8 +33,8 @@ jobs:
           
       - name: call results-receiver.actions.githubusercontent.com
         run: |
-          # dig results-receiver.actions.githubusercontent.com
-          # curl https://results-receiver.actions.githubusercontent.com
+          dig results-receiver.actions.githubusercontent.com
+          curl https://results-receiver.actions.githubusercontent.com
           echo "Hello from the build job!" > output.txt
 
       - name: Upload artifact
@@ -44,10 +44,10 @@ jobs:
           name: my-artifact
           path: output.txt
 
-      - name: print tracer log
-        if: always()
-        run: |
-          sudo cat trace.log
+      # - name: print tracer log
+      #   if: always()
+      #   run: |
+      #     sudo cat trace.log
 
   consume:
     needs: build
@@ -64,11 +64,11 @@ jobs:
           allowed-endpoints: >
             github.com:443
             
-      - name: Checkout code
-        uses: actions/checkout@v4
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
 
-      - run: |
-          bash trace_log.sh&
+      # - run: |
+      #     bash trace_log.sh&
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -80,7 +80,7 @@ jobs:
           echo "Contents of artifact:"
           cat output.txt
      
-      - name: print tracer log
-        if: always()
-        run: |
-          sudo cat trace.log
+      # - name: print tracer log
+      #   if: always()
+      #   run: |
+      #     sudo cat trace.log
