@@ -37,7 +37,8 @@ jobs:
               www.openssh.com:80
               www.pastebin.com:80
               www.sentry.org:80
-              www.tsmc.com:443            
+              www.tsmc.com:443
+              www.amazon.com:443
       
       - run: resolvectl status
       - name: Write Slack Webhook to File
@@ -63,6 +64,7 @@ jobs:
             curl -I https://goreleaser.com
             sleep 10  # wait 10 seconds between calls
           done
+      - run: curl www.amazon.com:443
   
   test-docker-outbound:
     runs-on: LargeRunner
