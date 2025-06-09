@@ -54,6 +54,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - run: curl https://registry.npmjs.org/
+      - run: curl www.amazon.com:443
       - name: Run outbound calls from host
         run: |
           start_time=$(date +%s)
@@ -64,7 +65,7 @@ jobs:
             curl -I https://goreleaser.com
             sleep 10  # wait 10 seconds between calls
           done
-      - run: curl www.amazon.com:443
+      
   
   test-docker-outbound:
     runs-on: LargeRunner
