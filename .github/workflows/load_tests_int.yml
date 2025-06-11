@@ -78,7 +78,7 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@rc-20-int
         with:
-          egress-policy: block
+          egress-policy: audit
           allowed-endpoints: >
             archive.ubuntu.com:80
             auth.docker.io:443
@@ -93,6 +93,9 @@ jobs:
             www.meta.com:443
             www.meta.com:80
             www.facebook.com:443
+
+      - name: new connection
+        run: wget www.instagram.com
 
       - name: connecting to domain new 
         run: wget www.youtube.com       
