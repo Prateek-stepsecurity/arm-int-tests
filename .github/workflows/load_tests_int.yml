@@ -100,6 +100,9 @@ jobs:
       - name: connecting to domain2
         run: wget www.facebook.com
 
+      - name: connecting to domain3
+        run: curl -I https://about.meta.com
+
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
     
