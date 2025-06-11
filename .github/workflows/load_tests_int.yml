@@ -95,6 +95,16 @@ jobs:
             www.facebook.com:443
 
       - name: testing 
+        run : wget www.cloudfare.com
+
+      - name: testing 2
+        run: wget www.fastly.com
+
+      - name: test 2
+        run : wget www.snapchat.com
+        
+
+      - name: testing 
         run : wget www.spacex.com
 
       - name: test 2
