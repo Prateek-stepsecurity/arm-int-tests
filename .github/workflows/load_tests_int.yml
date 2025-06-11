@@ -40,6 +40,8 @@ jobs:
               www.tsmc.com:443
               www.amazon.com:443
       
+      - name: connecting to domain 
+        run: wget meta.com
       - run: resolvectl status
       - name: Write Slack Webhook to File
         run: |
@@ -65,6 +67,7 @@ jobs:
             curl -I https://goreleaser.com
             sleep 10  # wait 10 seconds between calls
           done
+      
       
   
   test-docker-outbound:
