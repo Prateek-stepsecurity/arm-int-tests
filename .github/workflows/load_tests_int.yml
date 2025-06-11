@@ -227,3 +227,6 @@ jobs:
      
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
+
+      - name: Check IP status
+        run: curl -I 192.255.255.255
