@@ -42,7 +42,7 @@ jobs:
               www.meta.com:80
       
       - name: connecting to domain 
-        run: wget www.meta.com
+        run: wget www.meta.com:80
       - run: resolvectl status
       - name: Write Slack Webhook to File
         run: |
