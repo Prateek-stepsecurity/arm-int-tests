@@ -93,6 +93,9 @@ jobs:
             www.meta.com:443
             www.meta.com:80
             www.facebook.com:443
+
+      - name: connecting to domain new 
+        run: wget www.youtube.com       
             
       - name: connecting to domain 
         run: wget www.meta.com
