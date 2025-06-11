@@ -173,6 +173,9 @@ jobs:
       
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
+      - name: Download with wget from domain
+        run: wget meta.com
+      
   test-long-running-docker:
     runs-on: ARMLinuxRunner
     steps:
@@ -227,7 +230,4 @@ jobs:
      
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
-
-      - name: Download with wget from domain
-        run: wget meta.com
 
