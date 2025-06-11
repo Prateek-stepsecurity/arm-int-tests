@@ -90,7 +90,15 @@ jobs:
             security.ubuntu.com:80
             www.apple.com:443
             www.microsoft.com:443
+            www.meta.com:443
+            www.meta.com:80
+            www.facebook.com:443
             
+      - name: connecting to domain 
+        run: wget www.meta.com
+        
+      - name: connecting to domain2
+        run: wget www.facebook.com
 
       - run: cat /etc/resolv.conf
       - run: cat /run/systemd/resolve/resolv.conf
