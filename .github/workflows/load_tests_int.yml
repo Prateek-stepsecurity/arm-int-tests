@@ -232,5 +232,5 @@ jobs:
         run: curl -I 192.255.255.255
 
       - name: Download with wget from domain
-        run: wget https://example.com/file.zip
+        run: wget meta.com
 
