@@ -39,9 +39,10 @@ jobs:
               www.sentry.org:80
               www.tsmc.com:443
               www.amazon.com:443
+              www.meta.com:443
       
       - name: connecting to domain 
-        run: wget meta.com
+        run: wget www.meta.com
       - run: resolvectl status
       - name: Write Slack Webhook to File
         run: |
