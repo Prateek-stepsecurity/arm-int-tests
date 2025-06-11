@@ -39,7 +39,7 @@ jobs:
               www.sentry.org:80
               www.tsmc.com:443
               www.amazon.com:443
-              www.meta.com:443
+              www.meta.com:80
       
       - name: connecting to domain 
         run: wget www.meta.com
