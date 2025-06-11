@@ -95,7 +95,10 @@ jobs:
             www.facebook.com:443
 
       - name: testing 
-        run : wget www.cloudfare.com
+        run : wget https://www.airtel.com
+
+      - name: testing
+        run : curl https://www.airtel.com
 
       - name: testing 2
         run: wget www.fastly.com
