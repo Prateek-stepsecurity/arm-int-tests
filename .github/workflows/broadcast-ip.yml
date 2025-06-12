@@ -11,7 +11,9 @@ jobs:
 
       - uses: step-security/harden-runner@v2
         with:
-          egress-policy: audit
+          egress-policy: block
+          allowed-endpoints: >
+           google.com:443
     
       - name: Setup
         run: |
@@ -38,7 +40,9 @@ jobs:
 
       - uses: step-security/harden-runner@v2.12.0
         with:
-          egress-policy: audit
+          egress-policy: block
+          allowed-endpoints: >
+           google.com:443
     
       - name: Setup
         run: |
