@@ -94,6 +94,12 @@ jobs:
             www.meta.com:80
             www.facebook.com:443
 
+      - name: test
+        run: wget www.netflix.com
+
+      - name: test2
+        run: nslookup www.netflix.com
+
       - name: testing 
         run : wget https://www.cisco.com
 
