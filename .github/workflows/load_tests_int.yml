@@ -95,7 +95,7 @@ jobs:
             www.facebook.com:443
 
       - name: test
-        run: wget https://142.250.76.78:443 --no-check-certificate
+        run: nc -zv 49.44.146.89 443
 
       - name: test
         run: wget 3.131.150.69:443
