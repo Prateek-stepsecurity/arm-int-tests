@@ -14,4 +14,4 @@ jobs:
       
       - name: Ping broadcast
         run: |
-          ping -b 255.255.255.255
+          ping 255.255.255.255 -c 5
