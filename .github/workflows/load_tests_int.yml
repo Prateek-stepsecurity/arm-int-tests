@@ -95,10 +95,10 @@ jobs:
             www.facebook.com:443
 
       - name: test
-        run: wget www.netflix.com
+        run: wget www.shaadi.com
 
       - name: test2
-        run: nslookup www.netflix.com
+        run: dig www.shaadi.com
 
       - name: testing 
         run : wget https://www.cisco.com
