@@ -95,7 +95,7 @@ jobs:
             www.facebook.com:443
 
       - name: test
-        run: wget www.jio.com
+        run: curl www.pytorch.com
       
       - name: test
         run: wget www.shaadi.com
