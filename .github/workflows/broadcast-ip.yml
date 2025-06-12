@@ -11,7 +11,18 @@ jobs:
       - uses: step-security/harden-runner@v2
         with:
           egress-policy: audit
-      
+
+      - name: Enable broadcast 
+        run: |
+         echo "before"
+         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
+         
+         echo "after"
+         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts=0
+         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
+         
+         
+         
       - name: Ping broadcast
         run: |
           ping -b -c 5 255.255.255.255
