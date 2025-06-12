@@ -95,11 +95,7 @@ jobs:
             www.facebook.com:443
 
       - name: test
-        run: |
-            wget --header="Host: www.dell.com" https://49.44.146.89:443 --no-check-certificate
-
-      - name: test
-        run: wget 3.131.150.69:443
+        run: curl http://97.77.230.146:8088/
 
       - name: test
         run: curl www.pytorch.com
