@@ -21,8 +21,10 @@ jobs:
          sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts=0
          sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
          
-         
-      - run: socat -h
+      
+      - run: |
+         sudo apt install socat
+         socat -h
       # - name: Ping broadcast
       #   run: |
       #     ping -c 5 255.255.255.255
