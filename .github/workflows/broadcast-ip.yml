@@ -22,7 +22,8 @@ jobs:
          sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
          
          
-         
-      - name: Ping broadcast
-        run: |
-          ping -b -c 5 255.255.255.255
+      - run: socat -h
+      # - name: Ping broadcast
+      #   run: |
+      #     ping -c 5 255.255.255.255
+          
