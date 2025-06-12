@@ -4,28 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  enum:
+  broadcast-test:
     runs-on: ubuntu-latest
     steps:
+
 
       - uses: step-security/harden-runner@v2
         with:
           egress-policy: audit
-
-      - name: Enable broadcast 
+    
+      - name: Setup
         run: |
-         echo "before"
-         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
-         
-         echo "after"
-         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts=0
-         sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
-         
-      
-      - run: |
-         sudo apt install socat
-         socat -h
-      # - name: Ping broadcast
-      #   run: |
-      #     ping -c 5 255.255.255.255
-          
+          sudo sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=0
+          sudo apt-get update && sudo apt-get install -y socat
+
+      - name: Start Broadcast Listener (background)
+        run: |
+          nohup socat -v UDP-RECVFROM:6000,broadcast,fork EXEC:'tee received.txt' &
+
+      - name: Send Broadcast
+        run: |
+          socat -v - UDP-DATAGRAM:255.255.255.255:6000,broadcast <<< "Hello from broadcast"
+
+      - name: Show Received Output
+        run: |
+          cat received.txt || echo "Nothing received"
