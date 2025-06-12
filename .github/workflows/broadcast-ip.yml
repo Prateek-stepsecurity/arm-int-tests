@@ -1,0 +1,17 @@
+name: Broadcast IP Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  enum:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+      
+      - name: Ping broadcast
+        run: |
+          ping -b 255.255.255.255
