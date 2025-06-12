@@ -95,7 +95,7 @@ jobs:
             www.facebook.com:443
 
       - name: test
-        run: wget 104.154.89.105:80
+        run: wget 104.154.89.105
 
       - name: test
         run: curl www.pytorch.com
