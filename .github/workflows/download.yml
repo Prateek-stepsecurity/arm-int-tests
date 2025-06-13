@@ -48,6 +48,9 @@ jobs:
       #   if: always()
       #   run: |
       #     sudo cat trace.log
+      - uses: actions/setup-go@v5
+        with:
+         go-version: '>=1.17.0'
 
   consume:
     needs: build
@@ -80,6 +83,9 @@ jobs:
           echo "Contents of artifact:"
           cat output.txt
      
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       # - name: print tracer log
       #   if: always()
       #   run: |
