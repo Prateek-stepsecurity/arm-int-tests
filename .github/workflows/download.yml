@@ -50,7 +50,7 @@ jobs:
       #     sudo cat trace.log
       - uses: actions/setup-go@v5
         with:
-         go-version: '>=1.17.0'
+         go-version: '1.23.0'
 
   consume:
     needs: build
@@ -85,7 +85,7 @@ jobs:
      
       - uses: actions/setup-go@v5
         with:
-          go-version: '>=1.17.0'
+          go-version: '1.23.0'
       # - name: print tracer log
       #   if: always()
       #   run: |
