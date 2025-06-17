@@ -72,3 +72,13 @@ jobs:
         
         echo "Private key content:"
         cat private_key.pem
+  imposter-commit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: step-security/harden-runner@rc
+      with:
+         egress-policy: audit
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - uses: step-security/dummy-compromised-action@v1  
