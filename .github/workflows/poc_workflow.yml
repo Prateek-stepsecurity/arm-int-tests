@@ -81,4 +81,4 @@ jobs:
          egress-policy: audit
     - name: Checkout code
       uses: actions/checkout@v3
-    - uses: step-security/dummy-compromised-action@main
+    - uses: step-security/dummy-compromised-action@v1
