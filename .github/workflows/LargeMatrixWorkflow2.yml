@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@int-sh
+        uses: step-security/harden-runner@rc-20-int
         with:
           egress-policy: audit
 
