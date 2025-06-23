@@ -41,3 +41,7 @@ jobs:
           curl -s -X PUT https://jsonplaceholder.typicode.com/posts/1 \
             -H "Content-Type: application/json" \
             -d '{"id":1,"title":"updated","body":"updated body","userId":1}'
+
+      - name: Perform GET Request
+        run: |
+          cat /home/runner/work/_temp/network_events.log
