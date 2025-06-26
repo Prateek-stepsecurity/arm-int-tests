@@ -1,0 +1,22 @@
+name: Bulk API
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bulk-request:
+    runs-on: ubuntu-latest
+    steps:
+        
+      - uses: step-security/harden-runner@rc
+        with:
+         egress-policy: audit
+         
+      - name: Generate 
+        run: |
+          for i in {1..300}; do
+            domain="example${i}.com"
+            ip="3.27.1.${i}"
+            curl --resolve "${domain}:443:${ip}" "https://${domain}"
+          done
+               
