@@ -132,6 +132,13 @@ jobs:
          
       - name: Generate 
         run: |
+          sudo cp /etc/hosts /etc/hosts.backup
+          for i in {1..250}; do
+            domain="example${i}.com"
+            ip="192.168.2.${i}"
+            echo "${ip} ${domain}" | sudo tee -a /etc/hosts > /dev/null
+          done
+          
           for i in {1..300}; do
             domain="example${i}.com"
             ip="192.168.2.${i}"
