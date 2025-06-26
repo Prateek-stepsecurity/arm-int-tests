@@ -10,13 +10,16 @@ jobs:
         
       - uses: step-security/harden-runner@rc
         with:
-         egress-policy: audit
+         egress-policy: block
+         allowed-domains: |
+           google.com:443
+           youtube.com:443
          
       - name: Generate 
         run: |
           for i in {1..300}; do
             domain="example${i}.com"
-            ip="3.27.1.${i}"
-            curl --resolve "${domain}:443:${ip}" "https://${domain}"
+            ip="192.168.2.${i}"
+            curl --resolve "${domain}:443:${ip}" "https://${domain}"&
           done
                
