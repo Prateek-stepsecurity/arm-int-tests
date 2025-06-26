@@ -135,6 +135,6 @@ jobs:
           for i in {1..300}; do
             domain="example${i}.com"
             ip="192.168.2.${i}"
-            curl --resolve "${domain}:80:${ip}" --connect-timeout 2 --max-time 3 "http://${domain}"
+            curl --resolve "${domain}:80:${ip}" --connect-timeout 2 --max-time 3 "http://${domain}" || true
           done
                
