@@ -33,9 +33,6 @@ func worker(id int, jobs <-chan Domain, results chan<- Result, wg *sync.WaitGrou
 	// Create HTTP client with timeout
 	client := &http.Client{
 		Timeout: 10 * time.Second,
-		CheckRedirect: func(req *http.Request, via []*http.Request) error {
-			return http.ErrUseLastResponse
-		},
 	}
 	
 	
