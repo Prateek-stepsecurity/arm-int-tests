@@ -66,7 +66,7 @@ jobs:
       # - run: sudo resolvectl flush-caches 
   
       - name: Harden the runner (Audit all outbound calls)
-        uses: h0x0er/harden-runner@int #step-security/harden-runner@rc
+        uses: step-security/harden-runner@rc
         with:
           egress-policy: block
           allowed-endpoints: >
