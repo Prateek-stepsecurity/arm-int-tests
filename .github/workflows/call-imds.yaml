@@ -1,0 +1,18 @@
+name: Call IMDS Endpoint
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  call-endpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+
+      # Call AWS Instance Metadata Service (IMDS)
+      - name: Fetch instance metadata
+        run: |
+          echo "Calling IMDS to get instance-id"
+          INSTANCE_ID=$(curl --fail --silent http://169.254.169.254/latest/meta-data/instance-id)
+          echo "Instance ID: $INSTANCE_ID"
