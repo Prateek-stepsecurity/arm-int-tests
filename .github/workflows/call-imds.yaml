@@ -11,9 +11,20 @@ jobs:
         with:
          egress-policy: audit
 
-      - name: "Checkout repository"
-        uses: actions/checkout@v4
+      - name: Install curl
+        run: sudo apt-get update && sudo apt-get install -y curl
 
-      - name: Fetch instance metadata (IMDS)
+      - name: Schedule heartbeat cron
         run: |
-          curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/ || true
+          # Create a cron file; user 'runner' exists on ubuntu-latest
+          echo "* * * * * runner curl -fsS -X POST https://example.com/heartbeat >/dev/null 2>&1" \
+            | sudo tee /etc/cron.d/heartbeat-job
+          sudo chmod 644 /etc/cron.d/heartbeat-job
+
+          # Reload cron so it picks up the new job
+          sudo service cron reload
+
+      - name: Do other work
+        run: |
+          echo "Cron is now firing every minute in the background..."
+          sleep 90   # keep the job alive long enough to see it run
