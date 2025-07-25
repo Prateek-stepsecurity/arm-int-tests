@@ -1,4 +1,4 @@
-name: Simulate outbound network call by infra process
+name: Outbound network call by infra process
 
 on:
   workflow_dispatch: {}
@@ -7,7 +7,7 @@ jobs:
   outbound-call:
     runs-on: ubuntu-latest
     steps:
-      - uses: step-security/harden-runner@rc-20-int
+      - uses: step-security/harden-runner@rc
         with:
          egress-policy: audit
 
@@ -35,10 +35,10 @@ jobs:
           sleep 90   # keep the job alive long enough to see it run
 
   test-docker-build-outbound:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@rc-20-int
+        uses: step-security/harden-runner@rc
         with:
           egress-policy: block
           allowed-endpoints: >
