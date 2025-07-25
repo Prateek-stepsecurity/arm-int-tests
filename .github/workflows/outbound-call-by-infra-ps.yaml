@@ -1,15 +1,15 @@
 name: Outbound network call by infra process
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch: { }
 
 jobs:
   outbound-call:
     runs-on: ubuntu-latest
     steps:
-      - uses: step-security/harden-runner@rc
+      - uses: step-security/harden-runner@rc-20-int
         with:
-         egress-policy: audit
+          egress-policy: audit
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@rc
+        uses: step-security/harden-runner@rc-20-int
         with:
           egress-policy: block
           allowed-endpoints: >
