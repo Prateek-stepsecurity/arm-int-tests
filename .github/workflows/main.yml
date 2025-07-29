@@ -34,7 +34,7 @@ jobs:
                 System.out.println("Starting DNS resolution test...\n");
                 
                 String[] testUrls = {
-                    "file://public.json",
+                    "file:///public.json",
                     "file://internal.json",
                     "file:///etc/passwd",  // Control: proper file URL (no DNS)
                     "http://example.com/test.json"  // Control: should trigger DNS
